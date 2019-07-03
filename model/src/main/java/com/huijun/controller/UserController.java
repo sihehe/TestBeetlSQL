@@ -5,6 +5,7 @@ import com.huijun.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -38,6 +39,12 @@ public class UserController {
     @ResponseBody
     public User getUser(){
         User user = userService.findOne();
+        return user;
+    }
+    @RequestMapping("/findPage")
+    @ResponseBody
+    public List<User> findPage(@RequestParam(required = false,name = "account") String account,@RequestParam("start") Integer start,@RequestParam("end") Integer end){
+        List<User> user = userService.findPage(account,start,end);
         return user;
     }
 

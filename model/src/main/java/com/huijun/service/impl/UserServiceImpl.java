@@ -7,6 +7,7 @@ import org.beetl.sql.core.SQLManager;
 import org.beetl.sql.core.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -48,4 +49,18 @@ public class UserServiceImpl implements IUserService {
         User user = query.andEq("username", "张三").single();
         return user;
     }
+
+    @Override
+    public List<User> findPage(String account, Integer start, Integer end) {
+        List<User> all = null;
+        if(!StringUtils.isEmpty(account)){
+            Query<User> query = sqlManager.query(User.class);
+            all = query.andEq("account", account).limit(start, end).select();
+        }else{
+            all = userdao.all(start, end);
+
+        }
+        return all;
+    }
+
 }

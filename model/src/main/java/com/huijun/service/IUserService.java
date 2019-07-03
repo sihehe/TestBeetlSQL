@@ -19,4 +19,6 @@ public interface IUserService {
     User findOne();
 
     User findOneByUserName();
+
+    List<User> findPage(String account, Integer start, Integer end);
 }
