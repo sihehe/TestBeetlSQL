@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+beetlsql:
+# 是否开启beetlsql
+  enabled: true
+  sqlPath: /sql
+  nameConversion: org.beetl.sql.core.UnderlinedNameConversion
+  daoSuffix: Dao
+#  默认为com，此选项配置beetlsql.daoSuffix来自动扫描com包极其子包下的所有以Dao结尾的Mapper类
+  basePackage: com.huijun.dao
+  dbStyle: org.beetl.sql.core.db.MySqlStyle
+#  即向控制台输出执行时候的sql
+  beetl-beetlsql:
+    dev: true
