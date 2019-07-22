@@ -47,5 +47,13 @@ public class UserController {
         List<User> user = userService.findPage(account,start,end);
         return user;
     }
+    @RequestMapping("/pageQuery")
+    @ResponseBody
+    public List<User> pageQuery(){
+        List<User> user = userService.pageQuery();
+        return user;
+    }
+
+
 
 }

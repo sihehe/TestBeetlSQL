@@ -1,5 +1,6 @@
 package com.huijun.dao;
 
+import com.huijun.model.SysProduct;
 import com.huijun.model.User;
 import org.beetl.sql.core.annotatoin.Param;
 import org.beetl.sql.core.annotatoin.SqlResource;
@@ -10,13 +11,16 @@ import java.util.List;
 
 /**
  * @program: TestBeetlSQL
- * @description: this is userDao class
+ * @description: 操作product表
  * @author: Mr.si
- * @create: 2019-07-02 18:06
+ * @create: 2019-07-08 16:47
  **/
 
-@SqlResource("user")
+@SqlResource("product")
 @Repository
-public interface UserDao extends BaseMapper<User> {
+public interface ProductDao extends BaseMapper<User> {
+
+    List<SysProduct> getProductList(@Param("type") String type, @Param("season") String season);
 
 }
+

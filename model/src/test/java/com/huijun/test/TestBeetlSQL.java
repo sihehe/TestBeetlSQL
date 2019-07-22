@@ -23,7 +23,8 @@ public class TestBeetlSQL {
 
     @Test
     public void test1() throws Exception {
-        sqlManager.genPojoCodeToConsole("sys_user");
-//        sqlManager.genSQLTemplateToConsole("sys_user");
+//        sqlManager.genPojoCodeToConsole("sys_product");
+//        sqlManager.genPojoCodeToConsole("sys_type");
+        sqlManager.genSQLTemplateToConsole("sys_product");
     }
 }

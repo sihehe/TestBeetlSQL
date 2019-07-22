@@ -4,6 +4,7 @@ import com.huijun.dao.UserDao;
 import com.huijun.model.User;
 import com.huijun.service.IUserService;
 import org.beetl.sql.core.SQLManager;
+import org.beetl.sql.core.engine.PageQuery;
 import org.beetl.sql.core.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,6 +62,17 @@ public class UserServiceImpl implements IUserService {
 
         }
         return all;
+    }
+
+    @Override
+    public List<User> pageQuery() {
+        PageQuery<User> query = new PageQuery<>(1l,5l);
+        sqlManager.pageQuery("user.pageQuery", User.class, query);
+        long totalPage = query.getTotalPage();
+        long totalRow = query.getTotalRow();
+        System.out.println("totalPage = "+totalPage+"  totalRow"+totalRow);
+        List<User> list = query.getList();
+        return list;
     }
 
 }

@@ -21,4 +21,6 @@ public interface IUserService {
     User findOneByUserName();
 
     List<User> findPage(String account, Integer start, Integer end);
+
+    List<User> pageQuery();
 }

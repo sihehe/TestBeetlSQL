@@ -35,4 +35,10 @@ condition
 findOne
 ===
     select #use("cols")# from sys_user where id = #id#
+pageQuery
+===
+    select @pageTag(){
+    *
+    @}
+    from sys_user
 	
